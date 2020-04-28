@@ -19,10 +19,9 @@ public class Vaga {
 	
 	public Vaga() {}
 	
-	public Vaga(Candidato candidato, Empregador empregador, boolean perfilDaVaga, int periodo,
+	public Vaga( Empregador empregador, boolean perfilDaVaga, int periodo,
 			BigDecimal remuneracao, StatusVagaEnum status, Date data) {
 		
-		this.candidato = candidato;
 		this.data = data;
 		this.empregador = empregador;
 		this.perfilDaVaga = perfilDaVaga;

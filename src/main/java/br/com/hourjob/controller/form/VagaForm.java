@@ -26,11 +26,10 @@ public class VagaForm {
 	private Date data;
 	
 	
-	public Vaga toVaga(CandidatoRepository candidatoRepository, EmpregadorRepository empregadorRepository) {
+	public Vaga toVaga( EmpregadorRepository empregadorRepository) {
 		
-		Optional<Candidato> candidato = candidatoRepository.findById(idCandidato);
 		Optional<Empregador> empregador = empregadorRepository.findById(idEmpregador);
-		return new Vaga(candidato.get(),empregador.get(),this.perfilDaVaga,this.periodo,this.remuneracao, this.status,this.data);
+		return new Vaga(empregador.get(),this.perfilDaVaga,this.periodo,this.remuneracao, this.status,this.data);
 	}
 
 
