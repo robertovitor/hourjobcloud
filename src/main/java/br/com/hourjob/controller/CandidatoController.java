@@ -12,7 +12,9 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -48,6 +50,12 @@ public class CandidatoController {
 			@PageableDefault(sort = "dataCriacao", direction = Direction.DESC, page = 0, size = 10) Pageable paginacao) {
 		
 			return usuarioService.listar(idQuali,paginacao);
+	}
+	
+	@PutMapping("/avaliacao/{id}/{nota}")
+	@Transactional
+	public ResponseEntity<CandidatoDto> atualizar(@PathVariable Long id, @PathVariable int nota) {
+		return usuarioService.avaliar(id,nota);
 	}
 	
 	
