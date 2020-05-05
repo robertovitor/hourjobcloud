@@ -17,7 +17,7 @@ public class CandidatoDto {
 	}
 	
 	
-	private long id; 
+	private Long id; 
 	private String cpf;
 	private String nome;
 	private String email;
