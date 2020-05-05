@@ -26,8 +26,8 @@ public class CandidatoService {
 		return candidatoRepository.save(form.toCandidato());
 	}
 
-	public Page<CandidatoDto> listar(long id, Pageable paginacao) {
-			if (id == 0) {
+	public Page<CandidatoDto> listar(Long id, Pageable paginacao) {
+			if (id == null) {
 				Page<Candidato> candidato = candidatoRepository.findAll(paginacao);
 				return CandidatoDto.converter(candidato);
 			} else {
