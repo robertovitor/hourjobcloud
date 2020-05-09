@@ -47,4 +47,8 @@ public class CandidatoService {
 		return ResponseEntity.notFound().build();		
 	}
 
+	public Optional<Candidato> findByEmail(String username) {
+		return candidatoRepository.findByEmail(username);
+	}
+
 }
