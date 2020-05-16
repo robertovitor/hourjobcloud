@@ -8,3 +8,6 @@ spring:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
       ddl-auto: update
+jwt:
+  expiration: 3600
+  secret:  xxxx

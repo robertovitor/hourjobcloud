@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import br.com.hourjob.model.Candidato;
 import br.com.hourjob.model.LoginCandidato;
+import br.com.hourjob.repository.LoginCandidatoRepository;
 
 @Service
 public class AutenticacaoService implements UserDetailsService {
@@ -18,8 +19,8 @@ public class AutenticacaoService implements UserDetailsService {
 	private CandidatoService candidatoService; 
 	
 	@Autowired
-	private LoginCandidatoService loginCandidatoService;
-
+	LoginCandidatoRepository loginCandidatoRepository;
+	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		
@@ -27,7 +28,7 @@ public class AutenticacaoService implements UserDetailsService {
 		Optional<LoginCandidato> loginCandidato  = null; 
 		
 		if(candidato.isPresent()) {
-			loginCandidato = loginCandidatoService.findByCandidato(candidato);
+			loginCandidato = loginCandidatoRepository.findByCandidato(candidato.get().getId());
 		}
 		
 		if (loginCandidato.isPresent()) {

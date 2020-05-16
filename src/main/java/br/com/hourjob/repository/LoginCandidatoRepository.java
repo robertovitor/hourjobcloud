@@ -4,10 +4,11 @@ import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import br.com.hourjob.model.Candidato;
 import br.com.hourjob.model.LoginCandidato;
 
 
 public interface LoginCandidatoRepository  extends JpaRepository<LoginCandidato, Long> {
 
-	Optional<LoginCandidato> findByCandidato(Optional<Candidato> candidato);}
+	Optional<LoginCandidato> findByCandidato(long id);
+	
+}
