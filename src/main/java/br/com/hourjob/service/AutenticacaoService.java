@@ -28,7 +28,7 @@ public class AutenticacaoService implements UserDetailsService {
 		Optional<LoginCandidato> loginCandidato  = null; 
 		
 		if(candidato.isPresent()) {
-			loginCandidato = loginCandidatoRepository.findByCandidato(candidato.get().getId());
+			loginCandidato = loginCandidatoRepository.findByCandidato(candidato.get());
 		}
 		
 		if (loginCandidato.isPresent()) {

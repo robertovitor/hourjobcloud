@@ -9,6 +9,8 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,7 +21,7 @@ import br.com.hourjob.dto.TokenDto;
 import br.com.hourjob.service.TokenService;
 
 @RestController
-@RequestMapping("auth")
+@RequestMapping("/auth")
 public class AutenticacaoController {
 	
 	@Autowired
@@ -43,5 +45,10 @@ public class AutenticacaoController {
 		} catch (AuthenticationException e) {
 			return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
 		}
+	}
+	
+	@GetMapping("/encrypt/{pass}")
+	public String getEncrypt(@PathVariable(name = "pass") String pass) {
+		return tokenService.getEncrypt(pass);
 	}
 }
