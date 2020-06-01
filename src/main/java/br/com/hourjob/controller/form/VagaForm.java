@@ -8,7 +8,6 @@ import br.com.hourjob.model.Candidato;
 import br.com.hourjob.model.Empregador;
 import br.com.hourjob.model.StatusVagaEnum;
 import br.com.hourjob.model.Vaga;
-import br.com.hourjob.repository.CandidatoRepository;
 import br.com.hourjob.repository.EmpregadorRepository;
 import lombok.Data;
 
@@ -24,12 +23,13 @@ public class VagaForm {
 	private BigDecimal remuneracao;
 	private StatusVagaEnum status;
 	private Date data;
+	private String requisito;
 	
 	
 	public Vaga toVaga( EmpregadorRepository empregadorRepository) {
 		
 		Optional<Empregador> empregador = empregadorRepository.findById(idEmpregador);
-		return new Vaga(empregador.get(),this.perfilDaVaga,this.periodo,this.remuneracao, this.status,this.data);
+		return new Vaga(empregador.get(),this.perfilDaVaga,this.periodo,this.remuneracao, this.status,this.data, this.requisito);
 	}
 
 

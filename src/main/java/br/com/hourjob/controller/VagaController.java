@@ -1,12 +1,12 @@
 package br.com.hourjob.controller;
 
 import java.net.URI;
+import java.util.List;
 
 import javax.transaction.Transactional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort.Direction;
@@ -54,5 +54,12 @@ public class VagaController {
 			@PageableDefault(sort = "dataCriacao", direction = Direction.DESC, page = 0, size = 10) Pageable paginacao) {
 		
 			return vagaService.listar(id,paginacao);
+	}
+	
+	@GetMapping
+	@RequestMapping("/match")
+	public List<Vaga> match(@RequestParam(required = false) long id) {
+		
+			return vagaService.match(id);
 	}
 }

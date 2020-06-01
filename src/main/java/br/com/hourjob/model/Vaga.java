@@ -20,7 +20,7 @@ public class Vaga {
 	public Vaga() {}
 	
 	public Vaga( Empregador empregador, boolean perfilDaVaga, int periodo,
-			BigDecimal remuneracao, StatusVagaEnum status, Date data) {
+			BigDecimal remuneracao, StatusVagaEnum status, Date data, String requisito) {
 		
 		this.data = data;
 		this.empregador = empregador;
@@ -28,6 +28,7 @@ public class Vaga {
 		this.periodo= periodo;
 		this.remuneracao = remuneracao;
 		this.status = status;
+		this.requisito = requisito;
 	}
 	
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -42,5 +43,6 @@ public class Vaga {
 	@Enumerated(EnumType.STRING)
 	private StatusVagaEnum status;
 	private Date data;
+	private String requisito;
 	
 }
