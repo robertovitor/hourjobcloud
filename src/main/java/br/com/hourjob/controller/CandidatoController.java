@@ -31,32 +31,32 @@ import lombok.Data;
 @RequestMapping("/candidato")
 @Data
 public class CandidatoController {
-	
+
 	@Autowired
 	private CandidatoService usuarioService;
-	
+
 	@PostMapping
 	@Transactional
 	public ResponseEntity<CandidatoDto> cadastrar(@RequestBody @Valid CandidatoForm form, UriComponentsBuilder uriBuilder) {
-		
+
 		Candidato candidato = usuarioService.salvar(form);
-		
+
 		URI uri = uriBuilder.path("/usuario/{id}").buildAndExpand(candidato.getId()).toUri();
 		return ResponseEntity.created(uri).body(new CandidatoDto(candidato));
 	}
-	
+
 	@GetMapping
-	public Page<CandidatoDto> lista(@RequestParam(required = false) long idQuali, 
+	public Page<CandidatoDto> lista(@RequestParam(required = false) Long idQuali,
 			@PageableDefault(direction = Direction.DESC, page = 0, size = 10) Pageable paginacao) {
-		
+
 			return usuarioService.listar(idQuali,paginacao);
 	}
-	
+
 	@PutMapping("/avaliacao/{id}/{nota}")
 	@Transactional
 	public ResponseEntity<CandidatoDto> atualizar(@PathVariable Long id, @PathVariable int nota) {
 		return usuarioService.avaliar(id,nota);
 	}
-	
-	
+
+
 }
