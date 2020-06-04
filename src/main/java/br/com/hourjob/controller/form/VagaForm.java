@@ -13,9 +13,9 @@ import lombok.Data;
 
 @Data
 public class VagaForm {
-	
-	private long idCandidato;
-	private long idEmpregador;
+
+	private Long idCandidato;
+	private Long idEmpregador;
 	private Candidato candidato;
 	private Empregador empregador;
 	private boolean perfilDaVaga;
@@ -24,10 +24,10 @@ public class VagaForm {
 	private StatusVagaEnum status;
 	private Date data;
 	private String requisito;
-	
-	
+
+
 	public Vaga toVaga( EmpregadorRepository empregadorRepository) {
-		
+
 		Optional<Empregador> empregador = empregadorRepository.findById(idEmpregador);
 		return new Vaga(empregador.get(),this.perfilDaVaga,this.periodo,this.remuneracao, this.status,this.data, this.requisito);
 	}

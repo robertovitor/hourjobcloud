@@ -11,13 +11,16 @@ import lombok.Data;
 @Entity
 @Data
 public class Qualificacao {
- 
+
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private Long id;
 	private String escolaridade;
 	private String curso;
 	private String habilidades;
 	@ManyToOne
 	private Candidato candidato;
 
+//    public String getHabilidades() {
+//        return this.habilidades;
+//    }
 }

@@ -10,24 +10,24 @@ import lombok.Data;
 
 @Data
 public class VagaDto {
-	
+
 	public VagaDto(Vaga vaga) {
 		this.id = vaga.getId();
 		this.periodo = vaga.getPeriodo();
 		this.remuneracao = vaga.getRemuneracao();
 		this.status = vaga.getStatus();
 	}
-	
-	
-	private long id;
+
+
+	private Long id;
 	private boolean perfilDaVaga;
 	private int periodo;
 	private BigDecimal remuneracao;
 	private StatusVagaEnum status;
 
-	
 
-	
+
+
 	public static Page<VagaDto> converter(Page<Vaga> vaga) {
 		return vaga.map(VagaDto::new);
 	}

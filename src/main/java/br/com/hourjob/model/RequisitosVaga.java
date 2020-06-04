@@ -7,7 +7,7 @@ public class RequisitosVaga {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private long id;
+  private Long id;
   @ManyToOne
   private Candidato candidato;
   @OneToOne

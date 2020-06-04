@@ -16,12 +16,12 @@ import lombok.Data;
 @Entity
 @Data
 public class Vaga {
-	
+
 	public Vaga() {}
-	
+
 	public Vaga( Empregador empregador, boolean perfilDaVaga, int periodo,
 			BigDecimal remuneracao, StatusVagaEnum status, Date data, String requisito) {
-		
+
 		this.data = data;
 		this.empregador = empregador;
 		this.perfilDaVaga = perfilDaVaga;
@@ -30,9 +30,9 @@ public class Vaga {
 		this.status = status;
 		this.requisito = requisito;
 	}
-	
+
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private Long id;
 	@ManyToOne
 	private Candidato candidato;
 	@ManyToOne
@@ -44,5 +44,8 @@ public class Vaga {
 	private StatusVagaEnum status;
 	private Date data;
 	private String requisito;
-	
+
+  public Long getId() {
+    return this.id;
+  }
 }

@@ -12,12 +12,12 @@ import lombok.Data;
 @Entity
 @Data
 public class LoginEmpregador {
-	
+
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
-	
+	private Long id;
+
 	@OneToOne @JoinColumn(unique = true)
 	private Empregador empregador;
 	private String senha;
-	
+
 }

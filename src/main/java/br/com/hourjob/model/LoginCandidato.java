@@ -20,23 +20,23 @@ import lombok.Data;
 
 @Entity
 public class LoginCandidato implements UserDetails {
-	
+
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = -5609483637134073314L;
 
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
-	
+	private Long id;
+
 	@OneToOne @JoinColumn(unique = true)
 	private Candidato candidato;
 	private String senha;
-	
+
 	@ManyToMany(fetch = FetchType.EAGER)
 	private List<Perfil> perfis = new ArrayList<>();
-	
-	
+
+
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		return perfis;
@@ -68,5 +68,5 @@ public class LoginCandidato implements UserDetails {
 	public long getId() {
 		return this.id;
 	}
-	
+
 }

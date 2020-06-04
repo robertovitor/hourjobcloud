@@ -16,9 +16,9 @@ import lombok.Data;
 @Entity
 @Data
 public class HistoricoVaga {
-	
+
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private Long id;
 	@OneToOne
 	private Vaga vaga;
 	private Date data;
@@ -28,6 +28,6 @@ public class HistoricoVaga {
 	private BigDecimal remuneracao;
 	@Enumerated(EnumType.STRING)
 	private StatusVagaEnum statusVagaEnum;
-	private Date dataMatch; 
+	private Date dataMatch;
 
 }

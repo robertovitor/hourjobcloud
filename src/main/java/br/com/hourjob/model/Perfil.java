@@ -13,15 +13,15 @@ import lombok.Data;
 @Data
 @Entity
 public class Perfil implements GrantedAuthority {
-	
+
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 8915275687007156068L;
 
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
-	
+	private Long id;
+
 	private String perfil;
 
 	@Override

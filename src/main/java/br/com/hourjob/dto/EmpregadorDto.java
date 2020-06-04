@@ -7,7 +7,7 @@ import lombok.Data;
 
 @Data
 public class EmpregadorDto {
-	
+
 	public EmpregadorDto(Empregador empregador) {
 		this.id = empregador.getId();
 		this.cpf = empregador.getCep();
@@ -15,12 +15,12 @@ public class EmpregadorDto {
 		this.email = empregador.getEmail();
 
 	}
-	
-	private long id; 
+
+	private Long id;
 	private String cpf;
 	private String nome;
 	private String email;
-	
+
 	public static Page<EmpregadorDto	> converter(Page<Empregador> empregador) {
 		return empregador.map(EmpregadorDto::new);
 	}

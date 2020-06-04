@@ -15,9 +15,9 @@ import lombok.Data;
 @Entity
 @Data
 public class Candidato {
-	
+
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id; 
+	private Long id;
 	private String cpf;
 	private String nome;
 	private String telefone;
@@ -35,4 +35,7 @@ public class Candidato {
 	@OneToMany
 	private List<ServicosPrestados> servicosPrestados;
 
+//  public Qualificacao[] getQualificacao() {
+//    return null;
+//  }
 }

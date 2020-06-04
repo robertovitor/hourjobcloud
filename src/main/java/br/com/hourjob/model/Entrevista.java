@@ -14,15 +14,15 @@ import lombok.Data;
 @Entity
 @Data
 public class Entrevista {
-	
+
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private Long id;
 	@Enumerated(EnumType.STRING)
 	private TipoEntrevistaEnum tipoEntrevista;
 	@Enumerated(EnumType.STRING)
 	private ResultandoEntrevistaEnum resultadoEntrevista;
 	@OneToOne @JoinColumn(unique = true)
 	private Jornada jornada;
-	
+
 
 }

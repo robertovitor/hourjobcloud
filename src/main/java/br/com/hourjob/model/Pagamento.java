@@ -16,13 +16,13 @@ import lombok.Data;
 @Entity
 @Data
 public class Pagamento {
-	
+
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private Long id;
 	@Enumerated(EnumType.STRING)
 	TipoPagamentoEnum tipoPagamento;
 	private BigDecimal valor;
 	@OneToOne @JoinColumn(unique = true)
 	private Jornada jornada;
- 	
+
 }

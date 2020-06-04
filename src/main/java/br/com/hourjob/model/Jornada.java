@@ -14,7 +14,7 @@ import lombok.Data;
 @Data
 public class Jornada {
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private Long id;
 	@OneToOne
 	private Candidato candidato;
 	@OneToOne

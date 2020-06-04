@@ -10,8 +10,8 @@ import br.com.hourjob.model.Vaga;
 
 
 public interface VagaRepository  extends JpaRepository<Vaga, Long> {
-	
-	Page<Vaga> findById(Long id, Pageable paginacao);
-	
-	List<Vaga> findByRequisito(String requisito);
+
+  Page<Vaga> findById(Long id, Pageable paginacao);
+
+  List<Vaga> findByRequisitoAndCandidatoId(String requisito, Long i);
 }

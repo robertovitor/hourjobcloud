@@ -10,9 +10,9 @@ import lombok.Data;
 @Entity
 @Data
 public class Empregador {
-	
+
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private Long id;
 	private String cnpj;
 	private String nome;
 	private String telefone;

@@ -13,7 +13,7 @@ import br.com.hourjob.model.Vaga;
 
 public interface CandidatoRepository  extends JpaRepository<Candidato, Long> {
 
-	Page<Candidato> findByQualificacao(long id, Pageable paginacao);
+	Page<Candidato> findByQualificacao(Long id, Pageable paginacao);
 
 	Optional<Candidato> findByEmail(String username);
 

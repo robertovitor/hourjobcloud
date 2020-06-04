@@ -12,12 +12,12 @@ import lombok.Data;
 @Entity
 @Data
 public class ServicosPrestados {
-	
+
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private Long id;
 	@ManyToOne
 	private Candidato candidato;
 	@OneToOne
 	private HistoricoVaga historicoVaga;
-	
+
 }
