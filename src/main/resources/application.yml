@@ -1,12 +1,16 @@
 # datasource
 spring:
   datasource:
-   url: jdbc:postgresql://localhost:5432/hourjob
+   #url: jdbc:postgresql://localhost:5432/hourjob
     #url: jdbc:postgresql://motty.db.elephantsql.com:5432/pkrgnksb
     #username: pkrgnksb
     #password: BVWc_VGwv8XnIkiYqSxvbKo53_svdGVp
-   username: postgres
-   password: root
+   #username: postgres
+   #password: root
+
+  url: jdbc:postgresql://phnaxpxnnhebgd:72d0f00da3731222f338516a466d735d746db99bc7f4855a321b5a2f8bdfe286@ec2-54-175-117-212.compute-1.amazonaws.com:5432/dfuspqka2kf04q
+  username: phnaxpxnnhebgd
+  password: 72d0f00da3731222f338516a466d735d746db99bc7f4855a321b5a2f8bdfe286
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
@@ -22,3 +26,19 @@ jwt:
 #spring.datasource.url=jdbc:postgres://pkrgnksb:BVWc_VGwv8XnIkiYqSxvbKo53_svdGVp@motty.db.elephantsql.com:5432/pkrgnksb
 #spring.datasource.username=pkrgnksb
 #spring.datasource.password=BVWc_VGwv8XnIkiYqSxvbKo53_svdGVp
+
+#HerokuSQL
+#  Host
+#  ec2-54-175-117-212.compute-1.amazonaws.com
+#  Database
+#  dfuspqka2kf04q
+#  User
+#  phnaxpxnnhebgd
+#  Port
+#  5432
+#  Password
+#  72d0f00da3731222f338516a466d735d746db99bc7f4855a321b5a2f8bdfe286
+#  URI
+#  postgres://phnaxpxnnhebgd:72d0f00da3731222f338516a466d735d746db99bc7f4855a321b5a2f8bdfe286@ec2-54-175-117-212.compute-1.amazonaws.com:5432/dfuspqka2kf04q
+#  Heroku CLI
+#  heroku pg:psql postgresql-trapezoidal-61227 --app hourjob-api
