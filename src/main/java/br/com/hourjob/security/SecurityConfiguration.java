@@ -49,6 +49,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
       .antMatchers("/auth/encrypt/**").permitAll()
       .antMatchers("/swagger/**").permitAll()
       .antMatchers(HttpMethod.POST, "/auth").permitAll()
+      .antMatchers(HttpMethod.POST,"/candidato").permitAll()
       .anyRequest().authenticated()
       .and().csrf().disable()
       .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
