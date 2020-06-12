@@ -19,6 +19,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+
 
 import br.com.hourjob.controller.form.VagaForm;
 import br.com.hourjob.dto.VagaDto;
@@ -61,6 +64,14 @@ public class VagaController {
   public List<Vaga> match(@RequestParam(required = false) Long id) {
 
     return vagaService.match(id);
+  }
+
+  @PutMapping
+  @RequestMapping("/candidatar/{idVaga}/{idCandidato}")
+  @Transactional
+  public ResponseEntity<VagaDto> candidatar(@PathVariable("idVaga") Long idVaga, @PathVariable("idCandidato") Long idCandidato) {
+
+    return vagaService.candidatar(idVaga,idCandidato);
   }
 }
 

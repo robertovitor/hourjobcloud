@@ -43,7 +43,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
   @Override
   protected void configure(HttpSecurity http) throws Exception {
     http.authorizeRequests()
-      .antMatchers(HttpMethod.GET,"/vaga/**").permitAll()
+      //.antMatchers(HttpMethod.GET,"/vaga/**").permitAll()
+      .antMatchers("/vaga/**").permitAll()
       .antMatchers(HttpMethod.GET,"/empregador").permitAll()
       .antMatchers(HttpMethod.GET,"/candidato").permitAll()
       .antMatchers("/auth/encrypt/**").permitAll()

@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -17,6 +18,7 @@ import br.com.hourjob.controller.form.VagaForm;
 import br.com.hourjob.dto.VagaDto;
 import br.com.hourjob.model.Candidato;
 import br.com.hourjob.model.Qualificacao;
+import br.com.hourjob.model.StatusVagaEnum;
 import br.com.hourjob.model.Vaga;
 import br.com.hourjob.repository.CandidatoRepository;
 import br.com.hourjob.repository.EmpregadorRepository;
@@ -24,7 +26,6 @@ import br.com.hourjob.repository.VagaRepository;
 
 @Service
 public class VagaService {
-
 
   @Autowired
   private VagaRepository vagaRepository;
@@ -37,8 +38,8 @@ public class VagaService {
     return vagaRepository.save(form.toVaga(empregadorRepository));
   }
 
-  public Page<VagaDto> listar(Long id, Pageable paginacao ) {
-    if (id == null) {
+  public Page<VagaDto> listar(long id, Pageable paginacao) {
+    if (id == 0) {
       Page<Vaga> topicos = vagaRepository.findAll(paginacao);
       return VagaDto.converter(topicos);
     } else {
@@ -47,7 +48,7 @@ public class VagaService {
     }
   }
 
-  public List<Vaga> match(Long id){
+  public List<Vaga> match(long id) {
 
     Optional<Candidato> candidato = candidatoRepository.findById(id);
     List<Vaga> vagas = new ArrayList<Vaga>();
@@ -64,12 +65,32 @@ public class VagaService {
     if (vagas.size() != 0) {
 
       return vagas;
+    } else {
+      throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Not Found");
     }
+  }
+
+  public ResponseEntity<VagaDto> candidatar(long idVaga, long idCandidato) {
+
+    Optional<Candidato> candidato = candidatoRepository.findById(idCandidato);
+    Optional<Vaga> oldVaga = vagaRepository.findById(idVaga);
+
+    if (candidato.isPresent() && oldVaga.isPresent()) {
+
+      Vaga vaga = oldVaga.get();
+
+      vaga.setCandidato(candidato.get());
+      vaga.setStatus(StatusVagaEnum.MATCH);
+
+      vagaRepository.save(vaga);
+
+      return new ResponseEntity<VagaDto>(new VagaDto(vaga), HttpStatus.OK);
+
+    }
+
     else {
       throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Not Found");
     }
-
-
   }
 
 }
